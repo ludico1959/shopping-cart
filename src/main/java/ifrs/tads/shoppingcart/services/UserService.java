@@ -1,8 +1,10 @@
 package ifrs.tads.shoppingcart.services;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ifrs.tads.shoppingcart.dtos.UserDTO;
@@ -25,11 +27,11 @@ public class UserService {
     this.repository.save(new User(userData, address));
   }
 
-  public List<UserProjectionDTO> list() {
+  public Page<UserProjectionDTO> list() {
+    Pageable pageable = PageRequest.of(0, 5, Sort.by("name"));
+
     return this.repository
-      .findAll()
-      .stream()
-      .map(UserProjectionDTO::new)
-      .toList();
+      .findAll(pageable)
+      .map(UserProjectionDTO::new);
   }
 }
