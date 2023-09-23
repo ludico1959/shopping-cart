@@ -22,10 +22,10 @@ public class AddressService {
     return address;
   }
 
-  public Address update(ShortAddressDTO addressData) {
+  public Address update(ShortAddressDTO addressData, String addressId) {
     AddressDTO fullAddressData = ViaCep.generateAddress(addressData);
 
-    Address address = this.repository.getReferenceById(addressData.id());
+    Address address = this.repository.getReferenceById(addressId);
 
     address.updateInfo(fullAddressData);
 

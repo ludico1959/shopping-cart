@@ -40,8 +40,13 @@ public class UserService {
     Address address = null;
 
     if (userData.addressInfo() != null) {
-      address = this.addressService.update(userData.addressInfo());
+      String addressId = this.repository.getReferenceById(userData.id()).getAddress().getId();
+
+      System.out.println("\n\n----------------\n" + addressId + "\n----------------\n\n");
+
+      address = this.addressService.update(userData.addressInfo(), addressId);
     }
+    System.out.println("\n\n----------------\n" + address + "\n----------------\n\n");
 
     User user = this.repository.getReferenceById(userData.id());
 
