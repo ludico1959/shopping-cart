@@ -4,13 +4,14 @@ import ifrs.tads.shoppingcart.entities.Address;
 import ifrs.tads.shoppingcart.entities.User;
 
 public record UserProjectionDTO(
+  String id,
   String name,
   String email,
   Address address
 ) {
 
   public UserProjectionDTO(User user) {
-    this(user.getName(), user.getEmail(), user.getAddress());
+    this(user.getId(), user.getName(), user.getEmail(), user.getAddress());
   }
 
 }
