@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ifrs.tads.shoppingcart.dtos.UserDTO;
+import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.entities.Address;
 import ifrs.tads.shoppingcart.entities.User;
 import ifrs.tads.shoppingcart.repositories.UserRepository;
@@ -24,7 +25,11 @@ public class UserService {
     this.repository.save(new User(userData, address));
   }
 
-  public List<User> list() {
-    return this.repository.findAll();
+  public List<UserProjectionDTO> list() {
+    return this.repository
+      .findAll()
+      .stream()
+      .map(UserProjectionDTO::new)
+      .toList();
   }
 }

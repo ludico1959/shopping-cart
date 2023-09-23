@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ifrs.tads.shoppingcart.dtos.UserDTO;
-import ifrs.tads.shoppingcart.entities.User;
+import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.services.UserService;
 import jakarta.validation.Valid;
 
@@ -28,7 +28,7 @@ public class UserController {
 
   @GetMapping
   
-  public List<User> list() {
+  public List<UserProjectionDTO> list() {
     return this.service.list();
   }
 
