@@ -1,5 +1,7 @@
 package ifrs.tads.shoppingcart.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,10 @@ public class UserService {
   public void create(UserDTO userData) {
     Address address = this.addressService.create(userData.addressInfo());
 
-    repository.save(new User(userData, address));
+    this.repository.save(new User(userData, address));
+  }
+
+  public List<User> list() {
+    return this.repository.findAll();
   }
 }
