@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ifrs.tads.shoppingcart.dtos.UserCreateDTO;
+import ifrs.tads.shoppingcart.dtos.UserDetailsDTO;
 import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.dtos.UserUpdateDTO;
 import ifrs.tads.shoppingcart.entities.Address;
@@ -22,10 +23,12 @@ public class UserService {
   @Autowired
   private AddressService addressService;
 
-  public void create(UserCreateDTO userData) {
+  public User create(UserCreateDTO userData) {
     Address address = this.addressService.create(userData.addressInfo());
 
-    this.repository.save(new User(userData, address));
+    User user = this.repository.save(new User(userData, address));
+
+    return user;
   }
 
   public Page<UserProjectionDTO> list() {
@@ -36,7 +39,12 @@ public class UserService {
       .map(UserProjectionDTO::new);
   }
 
-  public void update(UserUpdateDTO userData) {
+  public User findById(String userId) {
+    return this.repository.getReferenceById(userId);
+
+  }
+
+  public User update(UserUpdateDTO userData) {
     Address address = null;
 
     if (userData.addressInfo() != null) {
@@ -46,10 +54,15 @@ public class UserService {
 
       address = this.addressService.update(userData.addressInfo(), addressId);
     }
-    System.out.println("\n\n----------------\n" + address + "\n----------------\n\n");
 
     User user = this.repository.getReferenceById(userData.id());
 
     user.updateInfo(userData, address);
+
+    return user;
+  }
+
+  public void delete(String userId) {
+    this.repository.deleteById(userId);
   }
 }
