@@ -44,4 +44,32 @@ public class Address {
     this.add = addressData.add();
     
   }
+
+  public void updateInfo(AddressDTO addressData) {
+    
+    this.zipCode = addressData.zipCode() != null 
+      ? addressData.zipCode() : this.zipCode;
+
+    this.street = addressData.street() != null 
+      ? addressData.street() : this.street;
+
+    this.number = addressData.number() != null 
+      ? addressData.number() : this.number;
+
+    this.complement   = addressData.complement() != null 
+      ? addressData.complement() : this.complement;
+
+    this.neighborhood = addressData.neighborhood() != null 
+      ? addressData.neighborhood() : this.neighborhood;
+
+    this.city = addressData.city() != null 
+      ? addressData.city() : this.city;
+
+    this.state = addressData.state() != null 
+      ? addressData.state() : this.state;
+
+    this.add = addressData.add() != null 
+      ? addressData.add() : this.add;;
+
+  }
 }
