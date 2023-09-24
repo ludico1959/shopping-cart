@@ -8,7 +8,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import ifrs.tads.shoppingcart.dtos.UserCreateDTO;
-import ifrs.tads.shoppingcart.dtos.UserDetailsDTO;
 import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.dtos.UserUpdateDTO;
 import ifrs.tads.shoppingcart.entities.Address;
