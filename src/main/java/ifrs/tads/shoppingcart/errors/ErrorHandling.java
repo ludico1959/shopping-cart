@@ -25,4 +25,5 @@ public class ErrorHandling {
 
     return ResponseEntity.badRequest().body(fieldErrors.stream().map(FieldError400DTO::new).toList());
   }
+  
 }
