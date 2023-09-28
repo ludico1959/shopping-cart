@@ -9,12 +9,12 @@ public record ProductCreateDTO(
   String name,
 
   @NotNull
-  double value,
+  float price,
 
   @NotNull
   int stock,
 
   @NotBlank
-  @Pattern(regexp = "\\d{2}")
+  @Pattern(regexp = "^[A-Z]{2}$")
   String stateStorage
 ) {}

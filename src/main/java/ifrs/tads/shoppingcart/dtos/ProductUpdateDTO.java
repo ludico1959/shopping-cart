@@ -3,12 +3,12 @@ package ifrs.tads.shoppingcart.dtos;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
-public record UpdateProductDTO(
+public record ProductUpdateDTO(
   @NotBlank
   String id,
 
   String name,
-  double value,
+  float price,
   int stock,
 
   @Pattern(regexp = "\\d{2}")

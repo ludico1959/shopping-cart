@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import ifrs.tads.shoppingcart.dtos.UserCreateDTO;
-import ifrs.tads.shoppingcart.dtos.UserDetailsDTO;
 import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.dtos.UserUpdateDTO;
 import ifrs.tads.shoppingcart.entities.User;
@@ -33,15 +32,17 @@ public class UserController {
 
   @PostMapping
   @Transactional
-  public ResponseEntity<UserDetailsDTO> create(
+  public ResponseEntity<UserProjectionDTO> create(
     @RequestBody @Valid UserCreateDTO userData, UriComponentsBuilder uriComponentsBuilder) {
+
     User user = this.service.create(userData);
     URI uri = uriComponentsBuilder
                 .path("/users/{id}")
                 .buildAndExpand(user.getId())
                 .toUri();
 
-    return ResponseEntity.created(uri).body(new UserDetailsDTO(user));
+    return ResponseEntity.created(uri).body(new UserProjectionDTO(user));
+    
   }
 
   @GetMapping
@@ -52,18 +53,18 @@ public class UserController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<UserDetailsDTO> findById(@PathVariable String id) {
+  public ResponseEntity<UserProjectionDTO> findById(@PathVariable String id) {
     User user = this.service.findById(id);
 
-    return ResponseEntity.ok(new UserDetailsDTO(user));
+    return ResponseEntity.ok(new UserProjectionDTO(user));
   }
 
   @PutMapping
   @Transactional
-  public ResponseEntity<UserDetailsDTO> update(@RequestBody UserUpdateDTO userData) {
+  public ResponseEntity<UserProjectionDTO> update(@RequestBody UserUpdateDTO userData) {
     User user = this.service.update(userData);
 
-    return ResponseEntity.ok(new UserDetailsDTO(user));
+    return ResponseEntity.ok(new UserProjectionDTO(user));
   } 
 
   @DeleteMapping("/{id}")

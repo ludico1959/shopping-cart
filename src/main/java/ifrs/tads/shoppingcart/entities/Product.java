@@ -1,7 +1,7 @@
 package ifrs.tads.shoppingcart.entities;
 
 import ifrs.tads.shoppingcart.dtos.ProductCreateDTO;
-import ifrs.tads.shoppingcart.dtos.UpdateProductDTO;
+import ifrs.tads.shoppingcart.dtos.ProductUpdateDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,23 +25,23 @@ public class Product {
   private String id;
 
   private String name;
-  private double value;
+  private float price;
   private int stock;
   private String stateStorage;
 
   public Product(ProductCreateDTO productData) {
     this.name = productData.name();
-    this.value = productData.value();
+    this.price = productData.price();
     this.stock = productData.stock();
     this.stateStorage = productData.stateStorage();
   }
 
-  public void updateInfo(UpdateProductDTO productData) {
+  public void updateInfo(ProductUpdateDTO productData) {
     this.name = productData.name() != null 
       ? productData.name() : this.name;
 
-    this.value = productData.value() != 0 
-      ? productData.value() : this.value;
+    this.price = productData.price() != 0 
+      ? productData.price() : this.price;
 
     this.stateStorage = productData.stateStorage() != null 
       ? productData.stateStorage() : this.stateStorage;
