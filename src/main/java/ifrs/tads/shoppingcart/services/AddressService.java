@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import ifrs.tads.shoppingcart.dtos.AddressDTO;
 import ifrs.tads.shoppingcart.dtos.ShortAddressDTO;
 import ifrs.tads.shoppingcart.entities.Address;
-import ifrs.tads.shoppingcart.repositories.AddressRepository;
+import ifrs.tads.shoppingcart.repositories.postgresql.AddressRepository;
 import ifrs.tads.shoppingcart.utils.ViaCep;
 
 @Service

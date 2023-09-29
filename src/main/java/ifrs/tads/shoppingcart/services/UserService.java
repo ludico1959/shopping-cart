@@ -12,7 +12,7 @@ import ifrs.tads.shoppingcart.dtos.UserProjectionDTO;
 import ifrs.tads.shoppingcart.dtos.UserUpdateDTO;
 import ifrs.tads.shoppingcart.entities.Address;
 import ifrs.tads.shoppingcart.entities.User;
-import ifrs.tads.shoppingcart.repositories.UserRepository;
+import ifrs.tads.shoppingcart.repositories.postgresql.UserRepository;
 
 @Service
 public class UserService {

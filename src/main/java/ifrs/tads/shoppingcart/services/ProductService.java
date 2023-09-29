@@ -11,7 +11,7 @@ import ifrs.tads.shoppingcart.dtos.ProductCreateDTO;
 import ifrs.tads.shoppingcart.dtos.ProductProjectionDTO;
 import ifrs.tads.shoppingcart.dtos.ProductUpdateDTO;
 import ifrs.tads.shoppingcart.entities.Product;
-import ifrs.tads.shoppingcart.repositories.ProductRepository;
+import ifrs.tads.shoppingcart.repositories.postgresql.ProductRepository;
 
 @Service
 public class ProductService {

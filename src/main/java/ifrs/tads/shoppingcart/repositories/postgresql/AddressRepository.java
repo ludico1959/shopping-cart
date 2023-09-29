@@ -1,4 +1,4 @@
-package ifrs.tads.shoppingcart.repositories;
+package ifrs.tads.shoppingcart.repositories.postgresql;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
